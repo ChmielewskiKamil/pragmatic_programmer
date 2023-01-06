@@ -157,4 +157,12 @@ mod path_printing_tests {
     fn it_should_print_pen_up() {
         assert_eq!(print_path_for_commands("U"), "Pen up\n");
     }
+
+    #[test]
+    fn it_should_print_combination_of_commands() {
+        assert_eq!(
+            print_path_for_commands("P 1\nU\nW 3"),
+            "Pen 1 selected\nPen up\nDraw west 3 cm\n"
+        );
+    }
 }
