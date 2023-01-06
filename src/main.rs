@@ -19,9 +19,10 @@ fn parse_command(command: &str) -> Command {
     // we need to convert it with chars()
     let c = tokens[0].chars().next().unwrap();
     // the integer after the command is the parameter
-    let parameter: Option<u32> = tokens[1].parse().ok();
+    let parameter = tokens.get(1).and_then(|s| s.parse().ok());
     match c {
         'P' => Command::PenSelect(parameter.unwrap()),
+        'D' => Command::PenDown,
         _ => panic!("Encountered error while parsing command"),
     }
 }
