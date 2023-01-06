@@ -78,10 +78,7 @@ mod single_command_parsing_tests {
 }
 
 pub fn parse_input_commands(user_input: &str) -> Result<Vec<Command>, &'static str> {
-    user_input
-        .split('\n')
-        .map(|command| parse_single_command(command))
-        .collect()
+    user_input.split('\n').map(parse_single_command).collect()
 }
 
 #[cfg(test)]
