@@ -9,7 +9,7 @@ pub enum Command {
     DrawSouth(u32),
 }
 
-pub fn parse_single_command(command: &str) -> Result<Command, &'static str> {
+fn parse_single_command(command: &str) -> Result<Command, &'static str> {
     // tokens will be used to derive the command and a parameter from str command
     // the command is formatted like this "P 2"
     // that's why it is necessary to split two tokens on the whitespace
@@ -77,7 +77,7 @@ mod single_command_parsing_tests {
     }
 }
 
-fn parse_input_commands(user_input: &str) -> Vec<Command> {
+pub fn parse_input_commands(user_input: &str) -> Vec<Command> {
     user_input
         .split('\n')
         .map(|command| parse_single_command(command).unwrap())
