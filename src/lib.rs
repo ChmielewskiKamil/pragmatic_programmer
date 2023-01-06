@@ -121,11 +121,11 @@ mod path_printing_tests {
 
     #[test]
     fn it_should_print_path_for_draw_north() {
-        assert_eq!(print_path_for_commands("N 1"), "Draw north 1 cm");
+        assert_eq!(print_path_for_commands("N 1"), "Draw north 1 cm\n");
     }
 
     #[test]
     fn it_should_print_path_for_draw_south() {
-        assert_eq!(print_path_for_commands("S 5"), "Draw south 5 cm");
+        assert_eq!(print_path_for_commands("S 5"), "Draw south 5 cm\n");
     }
 }
