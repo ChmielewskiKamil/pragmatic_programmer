@@ -128,4 +128,9 @@ mod path_printing_tests {
     fn it_should_print_path_for_draw_south() {
         assert_eq!(print_path_for_commands("S 5"), "Draw south 5 cm\n");
     }
+
+    #[test]
+    fn it_should_print_path_for_draw_west() {
+        assert_eq!(print_path_for_commands("W 10"), "Draw west 10 cm\n");
+    }
 }
