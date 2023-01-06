@@ -108,6 +108,7 @@ fn print_path_for_commands(user_input: &str) -> String {
         match command {
             Command::DrawNorth(x) => turtle_path.push_str(&format!("Draw north {} cm\n", x)),
             Command::DrawSouth(x) => turtle_path.push_str(&format!("Draw south {} cm\n", x)),
+            Command::DrawWest(x) => turtle_path.push_str(&format!("Draw west {} cm\n", x)),
             _ => todo!(),
         }
     }
