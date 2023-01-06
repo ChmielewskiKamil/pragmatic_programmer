@@ -99,7 +99,7 @@ mod user_input_parsing_tests {
     }
 }
 
-fn print_path_for_commands(user_input: &str) -> String {
+fn print_path_for_commands(user_input: &str) -> Result<String, &'static str> {
     let commands = parse_input_commands(user_input).unwrap();
 
     let mut turtle_path = String::new();
@@ -116,7 +116,7 @@ fn print_path_for_commands(user_input: &str) -> String {
         }
     }
 
-    turtle_path
+    Ok(turtle_path)
 }
 
 #[cfg(test)]
@@ -125,43 +125,46 @@ mod path_printing_tests {
 
     #[test]
     fn it_should_print_path_for_draw_north() {
-        assert_eq!(print_path_for_commands("N 1"), "Draw north 1 cm\n");
+        assert_eq!(print_path_for_commands("N 1").unwrap(), "Draw north 1 cm\n");
     }
 
     #[test]
     fn it_should_print_path_for_draw_south() {
-        assert_eq!(print_path_for_commands("S 5"), "Draw south 5 cm\n");
+        assert_eq!(print_path_for_commands("S 5").unwrap(), "Draw south 5 cm\n");
     }
 
     #[test]
     fn it_should_print_path_for_draw_west() {
-        assert_eq!(print_path_for_commands("W 10"), "Draw west 10 cm\n");
+        assert_eq!(
+            print_path_for_commands("W 10").unwrap(),
+            "Draw west 10 cm\n"
+        );
     }
 
     #[test]
     fn it_should_print_path_for_draw_east() {
-        assert_eq!(print_path_for_commands("E 4"), "Draw east 4 cm\n");
+        assert_eq!(print_path_for_commands("E 4").unwrap(), "Draw east 4 cm\n");
     }
 
     #[test]
     fn it_should_print_pen_selecting() {
-        assert_eq!(print_path_for_commands("P 2"), "Pen 2 selected\n");
+        assert_eq!(print_path_for_commands("P 2").unwrap(), "Pen 2 selected\n");
     }
 
     #[test]
     fn it_should_print_pen_down() {
-        assert_eq!(print_path_for_commands("D"), "Pen down\n");
+        assert_eq!(print_path_for_commands("D").unwrap(), "Pen down\n");
     }
 
     #[test]
     fn it_should_print_pen_up() {
-        assert_eq!(print_path_for_commands("U"), "Pen up\n");
+        assert_eq!(print_path_for_commands("U").unwrap(), "Pen up\n");
     }
 
     #[test]
     fn it_should_print_combination_of_commands() {
         assert_eq!(
-            print_path_for_commands("P 1\nU\nW 3"),
+            print_path_for_commands("P 1\nU\nW 3").unwrap(),
             "Pen 1 selected\nPen up\nDraw west 3 cm\n"
         );
     }
