@@ -108,7 +108,7 @@ mod path_printing_tests {
     use super::print_path_for_commands;
 
     #[test]
-    fn it_should_print_path_for_pen_select() {
-        assert_eq!(print_path_for_commands("P 1"), "Select pen 1");
+    fn it_should_print_path_for_draw_north() {
+        assert_eq!(print_path_for_commands("N 1"), "Draw north 1 cm");
     }
 }
