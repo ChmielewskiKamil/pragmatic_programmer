@@ -27,6 +27,7 @@ fn parse_command(command: &str) -> Command {
         'S' => Command::DrawSouth(parameter.unwrap()),
         'N' => Command::DrawNorth(parameter.unwrap()),
         'W' => Command::DrawWest(parameter.unwrap()),
+        'E' => Command::DrawEast(parameter.unwrap()),
         _ => panic!("Encountered error while parsing command"),
     }
 }
