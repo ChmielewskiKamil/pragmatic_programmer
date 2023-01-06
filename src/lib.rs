@@ -100,7 +100,7 @@ mod user_input_parsing_tests {
 }
 
 fn print_path_for_commands(user_input: &str) -> &str {
-    "Select pen 1"
+    "Draw north 1 cm"
 }
 
 #[cfg(test)]
@@ -110,5 +110,10 @@ mod path_printing_tests {
     #[test]
     fn it_should_print_path_for_draw_north() {
         assert_eq!(print_path_for_commands("N 1"), "Draw north 1 cm");
+    }
+
+    #[test]
+    fn it_should_print_path_for_draw_south() {
+        assert_eq!(print_path_for_commands("S 5"), "Draw south 5 cm");
     }
 }
