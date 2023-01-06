@@ -98,3 +98,13 @@ mod user_input_parsing_tests {
         );
     }
 }
+
+#[cfg(test)]
+mod path_printing_tests {
+    use super::print_path_for_commands;
+
+    #[test]
+    fn it_should_print_path_for_one_command() {
+        assert_eq!(print_path_for_commands("P 1"), "Select pen 1");
+    }
+}
