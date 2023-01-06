@@ -14,7 +14,7 @@ fn parse_command(command: &str) -> Command {
 }
 
 fn main() {
-    println!("Hello, world!");
+    parse_command("P 2");
 }
 
 #[cfg(test)]
