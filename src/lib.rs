@@ -33,7 +33,7 @@ pub fn parse_single_command(command: &str) -> Result<Command, &'static str> {
 }
 
 #[cfg(test)]
-mod parsing_tests {
+mod single_command_parsing_tests {
     use super::{parse_single_command, Command};
 
     #[test]
