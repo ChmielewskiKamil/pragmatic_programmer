@@ -61,4 +61,9 @@ mod parsing_tests {
     fn it_should_parse_draw_south_from_str() {
         assert_eq!(parse_command("S 5"), Command::DrawSouth(5));
     }
+
+    #[test]
+    fn it_should_parse_draw_north_from_str() {
+        assert_eq!(parse_command("N 10"), Command::DrawNorth(10));
+    }
 }
