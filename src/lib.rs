@@ -152,4 +152,9 @@ mod path_printing_tests {
     fn it_should_print_pen_down() {
         assert_eq!(print_path_for_commands("D"), "Pen down\n");
     }
+
+    #[test]
+    fn it_should_print_pen_up() {
+        assert_eq!(print_path_for_commands("U"), "Pen up\n");
+    }
 }
