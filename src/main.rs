@@ -9,7 +9,7 @@ enum Command {
     DrawSouth(u32),
 }
 
-fn parse_single_command(command: &str) -> Command {
+fn parse_single_command(command: &str) -> Result<Command, &'static str> {
     // tokens will be used to derive the command and a parameter from str command
     // the command is formatted like this "P 2"
     // that's why it is necessary to split two tokens on the whitespace
@@ -21,14 +21,14 @@ fn parse_single_command(command: &str) -> Command {
     // the integer after the command is the parameter
     let parameter = tokens.get(1).and_then(|s| s.parse().ok());
     match c {
-        'P' => Command::PenSelect(parameter.unwrap()),
-        'D' => Command::PenDown,
-        'U' => Command::PenUp,
-        'S' => Command::DrawSouth(parameter.unwrap()),
-        'N' => Command::DrawNorth(parameter.unwrap()),
-        'W' => Command::DrawWest(parameter.unwrap()),
-        'E' => Command::DrawEast(parameter.unwrap()),
-        _ => panic!("Encountered error while parsing command"),
+        'P' => Ok(Command::PenSelect(parameter.unwrap())),
+        'D' => Ok(Command::PenDown),
+        'U' => Ok(Command::PenUp),
+        'S' => Ok(Command::DrawSouth(parameter.unwrap())),
+        'N' => Ok(Command::DrawNorth(parameter.unwrap())),
+        'W' => Ok(Command::DrawWest(parameter.unwrap())),
+        'E' => Ok(Command::DrawEast(parameter.unwrap())),
+        _ => return Err("Could not parse the command."),
     }
 }
 
@@ -42,41 +42,41 @@ mod parsing_tests {
 
     #[test]
     fn it_should_parse_pen_select() {
-        assert_eq!(parse_single_command("P 2"), Command::PenSelect(2));
+        assert_eq!(parse_single_command("P 2"), Ok(Command::PenSelect(2)));
     }
 
     #[test]
     fn it_should_parse_pen_down() {
-        assert_eq!(parse_single_command("D"), Command::PenDown);
+        assert_eq!(parse_single_command("D"), Ok(Command::PenDown));
     }
 
     #[test]
     fn it_should_parse_with_trailing_spaces() {
-        assert_eq!(parse_single_command(" P 2 "), Command::PenSelect(2));
+        assert_eq!(parse_single_command(" P 2 "), Ok(Command::PenSelect(2)));
     }
 
     #[test]
     fn it_should_parse_pen_up() {
-        assert_eq!(parse_single_command("U"), Command::PenUp);
+        assert_eq!(parse_single_command("U"), Ok(Command::PenUp));
     }
 
     #[test]
     fn it_should_parse_draw_south() {
-        assert_eq!(parse_single_command("S 5"), Command::DrawSouth(5));
+        assert_eq!(parse_single_command("S 5"), Ok(Command::DrawSouth(5)));
     }
 
     #[test]
     fn it_should_parse_draw_north() {
-        assert_eq!(parse_single_command("N 10"), Command::DrawNorth(10));
+        assert_eq!(parse_single_command("N 10"), Ok(Command::DrawNorth(10)));
     }
 
     #[test]
     fn it_should_parse_draw_west() {
-        assert_eq!(parse_single_command("W 20"), Command::DrawWest(20));
+        assert_eq!(parse_single_command("W 20"), Ok(Command::DrawWest(20)));
     }
 
     #[test]
     fn it_should_parse_draw_east() {
-        assert_eq!(parse_single_command("E 35"), Command::DrawEast(35));
+        assert_eq!(parse_single_command("E 35"), Ok(Command::DrawEast(35)));
     }
 }
