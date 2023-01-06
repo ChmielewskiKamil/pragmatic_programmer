@@ -111,6 +111,7 @@ fn print_path_for_commands(user_input: &str) -> String {
             Command::DrawWest(x) => turtle_path.push_str(&format!("Draw west {} cm\n", x)),
             Command::DrawEast(x) => turtle_path.push_str(&format!("Draw east {} cm\n", x)),
             Command::PenSelect(x) => turtle_path.push_str(&format!("Pen {} selected\n", x)),
+            Command::PenDown => turtle_path.push_str("Pen down\n"),
             _ => todo!(),
         }
     }
