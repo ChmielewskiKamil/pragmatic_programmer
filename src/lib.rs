@@ -90,14 +90,14 @@ mod user_input_parsing_tests {
 
     #[test]
     fn it_should_parse_single_command() {
-        assert_eq!(parse_input_commands("N 1"), vec![Command::DrawNorth(1)]);
+        assert_eq!(parse_input_commands("N 1"), Ok(vec![Command::DrawNorth(1)]));
     }
 
     #[test]
     fn it_should_parse_two_commands() {
         assert_eq!(
             parse_input_commands("P 2\nE 5"),
-            vec![Command::PenSelect(2), Command::DrawEast(5)]
+            Ok(vec![Command::PenSelect(2), Command::DrawEast(5)])
         );
     }
 }
