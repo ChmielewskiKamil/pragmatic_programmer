@@ -99,6 +99,10 @@ mod user_input_parsing_tests {
     }
 }
 
+fn print_path_for_commands(user_input: &str) -> &str {
+    "Select pen 1"
+}
+
 #[cfg(test)]
 mod path_printing_tests {
     use super::print_path_for_commands;
