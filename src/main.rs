@@ -25,4 +25,9 @@ mod parsing_tests {
     fn it_should_parse_pen_select_from_str() {
         assert_eq!(parse_command("P 2"), Command::PenSelect(2));
     }
+
+    #[test]
+    fn it_should_parse_pen_down_from_str() {
+        assert_eq!(parse_command("D"), Command::PenDown);
+    }
 }
