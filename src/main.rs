@@ -55,4 +55,9 @@ mod parsing_tests {
     fn it_should_parse_pen_up_from_str() {
         assert_eq!(parse_command("U"), Command::PenUp);
     }
+
+    #[test]
+    fn it_should_parse_draw_south_from_str() {
+        assert_eq!(parse_command("S 5"), Command::DrawSouth(5));
+    }
 }
