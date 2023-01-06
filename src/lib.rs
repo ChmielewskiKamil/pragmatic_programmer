@@ -146,4 +146,9 @@ mod path_printing_tests {
     fn it_should_print_pen_selecting() {
         assert_eq!(print_path_for_commands("P 2"), "Pen 2 selected\n");
     }
+
+    #[test]
+    fn it_should_print_pen_down() {
+        assert_eq!(print_path_for_commands("D"), "Pen down\n");
+    }
 }
