@@ -10,7 +10,20 @@ enum Command {
 }
 
 fn parse_command(command: &str) -> Command {
-    Command::PenSelect(2)
+    // tokens will be used to derive the command and a parameter from str command
+    // the command is formatted like this "P 2"
+    // that's why it is necessary to split two tokens on the whitespace
+    let tokens: Vec<&str> = command.trim().split_whitespace().collect();
+    // first char is the command type
+    // as tokens[0] is of type string and we are interested in chars
+    // we need to convert it with chars()
+    let c = tokens[0].chars().next().unwrap();
+    // the integer after the command is the parameter
+    let parameter: Option<u32> = tokens[1].parse().ok();
+    match c {
+        'P' => Command::PenSelect(parameter.unwrap()),
+        _ => panic!("Encountered error while parsing command"),
+    }
 }
 
 fn main() {
