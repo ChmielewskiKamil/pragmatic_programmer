@@ -9,7 +9,7 @@ enum Command {
     DrawSouth(u32),
 }
 
-fn parse_command(command: &str) -> Command {
+fn parse_single_command(command: &str) -> Command {
     // tokens will be used to derive the command and a parameter from str command
     // the command is formatted like this "P 2"
     // that's why it is necessary to split two tokens on the whitespace
@@ -33,50 +33,50 @@ fn parse_command(command: &str) -> Command {
 }
 
 fn main() {
-    parse_command("P 2");
+    parse_single_command("P 2");
 }
 
 #[cfg(test)]
 mod parsing_tests {
-    use super::{parse_command, Command};
+    use super::{parse_single_command, Command};
 
     #[test]
     fn it_should_parse_pen_select() {
-        assert_eq!(parse_command("P 2"), Command::PenSelect(2));
+        assert_eq!(parse_single_command("P 2"), Command::PenSelect(2));
     }
 
     #[test]
     fn it_should_parse_pen_down() {
-        assert_eq!(parse_command("D"), Command::PenDown);
+        assert_eq!(parse_single_command("D"), Command::PenDown);
     }
 
     #[test]
     fn it_should_parse_with_trailing_spaces() {
-        assert_eq!(parse_command(" P 2 "), Command::PenSelect(2));
+        assert_eq!(parse_single_command(" P 2 "), Command::PenSelect(2));
     }
 
     #[test]
     fn it_should_parse_pen_up() {
-        assert_eq!(parse_command("U"), Command::PenUp);
+        assert_eq!(parse_single_command("U"), Command::PenUp);
     }
 
     #[test]
     fn it_should_parse_draw_south() {
-        assert_eq!(parse_command("S 5"), Command::DrawSouth(5));
+        assert_eq!(parse_single_command("S 5"), Command::DrawSouth(5));
     }
 
     #[test]
     fn it_should_parse_draw_north() {
-        assert_eq!(parse_command("N 10"), Command::DrawNorth(10));
+        assert_eq!(parse_single_command("N 10"), Command::DrawNorth(10));
     }
 
     #[test]
     fn it_should_parse_draw_west() {
-        assert_eq!(parse_command("W 20"), Command::DrawWest(20));
+        assert_eq!(parse_single_command("W 20"), Command::DrawWest(20));
     }
 
     #[test]
     fn it_should_parse_draw_east() {
-        assert_eq!(parse_command("E 35"), Command::DrawEast(35));
+        assert_eq!(parse_single_command("E 35"), Command::DrawEast(35));
     }
 }
