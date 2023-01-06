@@ -77,11 +77,15 @@ mod single_command_parsing_tests {
     }
 }
 
+fn parse_input_commands(user_input: &str) -> Vec<Command> {
+    todo!()
+}
+
 #[cfg(test)]
 mod user_input_parsing_tests {
     use super::{parse_input_commands, Command};
 
     fn it_should_parse_single_command() {
-        assert_eq!(parse_input_commands("N 1"), Ok(vec![Command::DrawNorth(1)]));
+        assert_eq!(parse_input_commands("N 1"), vec![Command::DrawNorth(1)]);
     }
 }
