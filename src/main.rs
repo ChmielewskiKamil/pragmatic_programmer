@@ -28,7 +28,7 @@ fn parse_single_command(command: &str) -> Result<Command, &'static str> {
         'N' => Ok(Command::DrawNorth(parameter.unwrap())),
         'W' => Ok(Command::DrawWest(parameter.unwrap())),
         'E' => Ok(Command::DrawEast(parameter.unwrap())),
-        _ => return Err("Could not parse the command."),
+        _ => Err("Could not parse the command."),
     }
 }
 
