@@ -73,4 +73,9 @@ mod parsing_tests {
     fn it_should_parse_draw_west() {
         assert_eq!(parse_command("W 20"), Command::DrawWest(20));
     }
+
+    #[test]
+    fn it_should_parse_draw_east() {
+        assert_eq!(parse_command("E 35"), Command::DrawEast(35));
+    }
 }
