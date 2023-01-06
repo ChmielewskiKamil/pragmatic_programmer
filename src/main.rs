@@ -39,12 +39,12 @@ mod parsing_tests {
     use super::{parse_command, Command};
 
     #[test]
-    fn it_should_parse_pen_select_from_str() {
+    fn it_should_parse_pen_select_from() {
         assert_eq!(parse_command("P 2"), Command::PenSelect(2));
     }
 
     #[test]
-    fn it_should_parse_pen_down_from_str() {
+    fn it_should_parse_pen_down_from() {
         assert_eq!(parse_command("D"), Command::PenDown);
     }
 
@@ -54,17 +54,17 @@ mod parsing_tests {
     }
 
     #[test]
-    fn it_should_parse_pen_up_from_str() {
+    fn it_should_parse_pen_up_from() {
         assert_eq!(parse_command("U"), Command::PenUp);
     }
 
     #[test]
-    fn it_should_parse_draw_south_from_str() {
+    fn it_should_parse_draw_south_from() {
         assert_eq!(parse_command("S 5"), Command::DrawSouth(5));
     }
 
     #[test]
-    fn it_should_parse_draw_north_from_str() {
+    fn it_should_parse_draw_north_from() {
         assert_eq!(parse_command("N 10"), Command::DrawNorth(10));
     }
 }
