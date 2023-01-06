@@ -23,6 +23,7 @@ fn parse_command(command: &str) -> Command {
     match c {
         'P' => Command::PenSelect(parameter.unwrap()),
         'D' => Command::PenDown,
+        'U' => Command::PenUp,
         _ => panic!("Encountered error while parsing command"),
     }
 }
