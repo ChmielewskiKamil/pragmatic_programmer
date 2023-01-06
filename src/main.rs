@@ -36,6 +36,8 @@ fn main() {
 
 #[cfg(test)]
 mod parsing_tests {
+    use core::num::dec2flt::parse;
+
     use super::{parse_command, Command};
 
     #[test]
@@ -66,5 +68,10 @@ mod parsing_tests {
     #[test]
     fn it_should_parse_draw_north() {
         assert_eq!(parse_command("N 10"), Command::DrawNorth(10));
+    }
+
+    #[test]
+    fn it_should_parse_draw_west() {
+        assert_eq!(parse_command("W 20"), Command::DrawWest(20));
     }
 }
