@@ -26,6 +26,7 @@ fn parse_command(command: &str) -> Command {
         'U' => Command::PenUp,
         'S' => Command::DrawSouth(parameter.unwrap()),
         'N' => Command::DrawNorth(parameter.unwrap()),
+        'W' => Command::DrawWest(parameter.unwrap()),
         _ => panic!("Encountered error while parsing command"),
     }
 }
@@ -36,8 +37,6 @@ fn main() {
 
 #[cfg(test)]
 mod parsing_tests {
-    use core::num::dec2flt::parse;
-
     use super::{parse_command, Command};
 
     #[test]
