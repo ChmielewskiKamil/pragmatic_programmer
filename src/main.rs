@@ -24,6 +24,7 @@ fn parse_command(command: &str) -> Command {
         'P' => Command::PenSelect(parameter.unwrap()),
         'D' => Command::PenDown,
         'U' => Command::PenUp,
+        'S' => Command::DrawSouth(parameter.unwrap()),
         _ => panic!("Encountered error while parsing command"),
     }
 }
