@@ -140,4 +140,9 @@ mod path_printing_tests {
     fn it_should_print_path_for_draw_east() {
         assert_eq!(print_path_for_commands("E 4"), "Draw east 4 cm\n");
     }
+
+    #[test]
+    fn it_should_print_pen_selecting() {
+        assert_eq!(print_path_for_commands("P 2"), "Pen 2 selected\n");
+    }
 }
