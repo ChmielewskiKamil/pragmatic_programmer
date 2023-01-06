@@ -78,7 +78,10 @@ mod single_command_parsing_tests {
 }
 
 fn parse_input_commands(user_input: &str) -> Vec<Command> {
-    vec![parse_single_command(user_input).unwrap()]
+    user_input
+        .split('\n')
+        .map(|command| parse_single_command(command).unwrap())
+        .collect()
 }
 
 #[cfg(test)]
