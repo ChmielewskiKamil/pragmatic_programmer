@@ -99,8 +99,20 @@ mod user_input_parsing_tests {
     }
 }
 
-fn print_path_for_commands(user_input: &str) -> &str {
-    "Draw north 1 cm"
+fn print_path_for_commands(user_input: &str) -> String {
+    let commands = parse_input_commands(user_input).unwrap();
+
+    let mut turtle_path = String::new();
+
+    for command in commands {
+        match command {
+            Command::DrawNorth(x) => turtle_path.push_str(&format!("Draw north {} cm\n", x)),
+            Command::DrawSouth(x) => println!("Draw south {} cm", x),
+            _ => todo!(),
+        }
+    }
+
+    turtle_path
 }
 
 #[cfg(test)]
