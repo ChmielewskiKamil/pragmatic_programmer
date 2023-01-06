@@ -1,4 +1,4 @@
-enum Commands {
+enum Command {
     PenSelect(u32),
     PenDown,
     PenUp,
@@ -14,10 +14,10 @@ fn main() {
 
 #[cfg(test)]
 mod parsing_tests {
-    use super::Commands;
+    use super::Command;
 
     #[test]
     fn it_should_parse_pen_select_from_str() {
-        assert_eq!(parse_command("P 2"), Commands::PenSelect(2));
+        assert_eq!(parse_command("P 2"), Command::PenSelect(2));
     }
 }
