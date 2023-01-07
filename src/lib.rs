@@ -1,3 +1,29 @@
+use std::error::Error;
+
+pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
+    println!("Provided instructions: \n{}", config.user_instructions);
+
+    println!("{}", print_path_for_commands(&config.user_instructions)?);
+
+    Ok(())
+}
+
+pub struct Config {
+    user_instructions: String,
+}
+
+impl Config {
+    pub fn build(args: &[String]) -> Result<Config, &'static str> {
+        if args.len() < 2 {
+            return Err("Not enough arguments.");
+        }
+
+        let user_instructions = args[1].clone();
+
+        Ok(Config { user_instructions })
+    }
+}
+
 #[derive(Debug, PartialEq)]
 pub enum Command {
     PenSelect(u32),
