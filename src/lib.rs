@@ -77,7 +77,7 @@ mod single_command_parsing_tests {
     }
 }
 
-pub fn parse_input_commands(user_input: &str) -> Result<Vec<Command>, &'static str> {
+fn parse_input_commands(user_input: &str) -> Result<Vec<Command>, &'static str> {
     user_input.split('\n').map(parse_single_command).collect()
 }
 
@@ -99,8 +99,7 @@ mod user_input_parsing_tests {
     }
 }
 
-#[allow(dead_code)]
-fn print_path_for_commands(user_input: &str) -> Result<String, String> {
+pub fn print_path_for_commands(user_input: &str) -> Result<String, String> {
     let commands = parse_input_commands(user_input).map_err(|err| err.to_string())?;
 
     let mut turtle_path = String::new();
