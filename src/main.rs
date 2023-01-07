@@ -1,6 +1,6 @@
 // use std::process;
 use std::env;
-use turtle_language_parser::print_path_for_commands;
+// use turtle_language_parser::print_path_for_commands;
 
 fn main() {
     // parse_input_commands("P 2").unwrap_or_else(|err| {
@@ -9,11 +9,17 @@ fn main() {
     // });
 
     let args: Vec<String> = env::args().collect();
-    let instructions = parse_config(&args);
+    let config: Config = parse_config(&args);
+
+    println!("Provided instructions: \n{}", config.user_instructions);
 }
 
-fn parse_config(args: &[String]) -> &str {
-    let user_instructions = &args[1];
+struct Config {
+    user_instructions: String,
+}
 
-    user_instructions
+fn parse_config(args: &[String]) -> Config {
+    let user_instructions = args[1].clone();
+
+    Config { user_instructions }
 }
