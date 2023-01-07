@@ -3,5 +3,5 @@
 version = 3
 
 [[package]]
-name = "pragmatic_programmer"
+name = "turtle_language_parser"
 version = "0.1.0"
