@@ -9,7 +9,7 @@ fn main() {
     // });
 
     let args: Vec<String> = env::args().collect();
-    let config: Config = parse_config(&args);
+    let config: Config = Config::new(&args);
 
     println!("Provided instructions: \n{}", config.user_instructions);
 }
@@ -18,8 +18,10 @@ struct Config {
     user_instructions: String,
 }
 
-fn parse_config(args: &[String]) -> Config {
-    let user_instructions = args[1].clone();
+impl Config {
+    fn new(args: &[String]) -> Config {
+        let user_instructions = args[1].clone();
 
-    Config { user_instructions }
+        Config { user_instructions }
+    }
 }
