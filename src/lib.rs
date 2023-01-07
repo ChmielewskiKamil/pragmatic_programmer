@@ -99,6 +99,7 @@ mod user_input_parsing_tests {
     }
 }
 
+#[allow(dead_code)]
 fn print_path_for_commands(user_input: &str) -> Result<String, String> {
     let commands = parse_input_commands(user_input).map_err(|err| err.to_string())?;
 
