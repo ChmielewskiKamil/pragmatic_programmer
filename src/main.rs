@@ -1,4 +1,5 @@
 use std::env;
+use std::error::Error;
 use std::process;
 
 use turtle_language_parser::print_path_for_commands;
@@ -16,16 +17,18 @@ fn main() {
         process::exit(1);
     });
 
-    run(config);
+    if let Err(e) = run(config) {
+        println!("Application error: {}", e);
+        process::exit(1);
+    }
 }
 
-fn run(config: Config) {
+fn run(config: Config) -> Result<(), Box<dyn Error>> {
     println!("Provided instructions: \n{}", config.user_instructions);
 
-    println!(
-        "{}",
-        print_path_for_commands(&config.user_instructions).unwrap()
-    );
+    println!("{}", print_path_for_commands(&config.user_instructions)?);
+
+    Ok(())
 }
 
 struct Config {
