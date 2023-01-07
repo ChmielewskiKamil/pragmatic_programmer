@@ -1,5 +1,5 @@
-use pragmatic_programmer::parse_input_commands;
 use std::process;
+use turtle_language_parser::parse_input_commands;
 
 fn main() {
     parse_input_commands("P 2").unwrap_or_else(|err| {
