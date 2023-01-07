@@ -1,5 +1,7 @@
 use std::env;
 use std::process;
+
+use turtle_language_parser::print_path_for_commands;
 // use turtle_language_parser::print_path_for_commands;
 
 fn main() {
@@ -15,6 +17,11 @@ fn main() {
     });
 
     println!("Provided instructions: \n{}", config.user_instructions);
+
+    println!(
+        "{}",
+        print_path_for_commands(&config.user_instructions).unwrap()
+    );
 }
 
 struct Config {
