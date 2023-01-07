@@ -9,5 +9,8 @@ fn main() {
     // });
 
     let args: Vec<String> = env::args().collect();
-    dbg!(args);
+
+    let user_instructions = &args[1];
+
+    println!("User instructions: {}", user_instructions);
 }
