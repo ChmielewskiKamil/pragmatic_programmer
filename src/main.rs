@@ -16,6 +16,10 @@ fn main() {
         process::exit(1);
     });
 
+    run(config);
+}
+
+fn run(config: Config) {
     println!("Provided instructions: \n{}", config.user_instructions);
 
     println!(
